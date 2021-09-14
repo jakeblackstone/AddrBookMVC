@@ -1,14 +1,14 @@
 package com.blackstone.addrbookmvc;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Border;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
+import com.blackstone.addrbookmvc.model.Contact;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -19,21 +19,26 @@ public class Main extends Application {
     private BorderPane rootView;    // we add this member to cast the root as BorderPane
 
     /**
+     * This is the main list that will hold the contact data in memory during runtime
+     * Observable so that the controller may update view
+     */
+    private final ObservableList<Contact> contactObservableList = FXCollections.observableArrayList();
+
+    /**
      * Overrides JavaFX start() to initialize root layout and call overlays
      * @param stage primary stage object
      * @throws IOException if something causes the View to not load
      */
     @Override
     public void start(Stage stage) throws IOException {
+
         // Load FXML to application
         this.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("view/RootWrapper.fxml"));
-        rootView = (BorderPane) fxmlLoader.load();
-        // we cast the loaded root fxml as BorderPane to match scene builder as we pass to Scene
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/RootWrapper.fxml"));
+        rootView = loader.load();
 
         // Set up and display scene
-        Scene scene = new Scene(rootView, 320, 240);
+        Scene scene = new Scene(rootView);
         this.stage.setTitle("Address Book");
         this.stage.setScene(scene);
         this.stage.show();
@@ -47,15 +52,14 @@ public class Main extends Application {
      * @throws IOException if the contact view cannot load
      */
     public void overlayContactView() throws IOException {
-        FXMLLoader contactViewLoader = new FXMLLoader();                // same idea as root view
-        contactViewLoader.setLocation(Main.class.getResource("view/ContactView.fxml"));
-        AnchorPane contactView = (AnchorPane) contactViewLoader.load(); // cast loaded fxml to AnchorPane and store
+        FXMLLoader contactViewLoader = new FXMLLoader(Main.class.getResource("fxml/ContactView.fxml"));              // same idea as root view
+        AnchorPane contactView = contactViewLoader.load(); // cast loaded fxml to AnchorPane and store
         rootView.setCenter(contactView);                               // center the contactView on root
     }
 
     /**
      * A getter for the stage in case it needs to be accessed outside the class
-     * @return
+     * @return Stage
      */
     public Stage getStage() {
         return stage;
@@ -63,12 +67,19 @@ public class Main extends Application {
 
     /**
      * A getter for the root view (cast as BorderPane) in case it needs to be accessed outside the class
-     * @return
+     * @return BorderPane
      */
     public BorderPane getRootView() {
         return rootView;
     }
 
+    /**
+     * A getter for the contact observable list
+     * @return ObservableList
+     */
+    public ObservableList<Contact> getContactObservableListList() {
+        return contactObservableList;
+    }
 
     public static void main(String[] args) {
         launch(args);
