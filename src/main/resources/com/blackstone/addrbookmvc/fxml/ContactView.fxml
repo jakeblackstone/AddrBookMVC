@@ -12,122 +12,123 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="223.0" layoutY="97.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <TableView layoutX="2.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                      <TableColumn prefWidth="101.0" text="First Name" />
-                      <TableColumn prefWidth="102.0" text="Last Name" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Contact Details" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="Helvetica Neue" size="13.0" />
-                     </font>
-                  </Label>
-                  <GridPane layoutX="132.0" layoutY="52.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="84.0" text="First Name" translateX="10.0" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.blackstone.addrbookmvc.ContactController">
+    <children>
+        <SplitPane dividerPositions="0.5359669811320755" layoutX="223.0" layoutY="97.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <TableView fx:id="contactTableView" layoutX="2.0" prefHeight="498.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn prefWidth="101.0" text="First Name" fx:id="firstNameCol"/>
+                                <TableColumn prefWidth="102.0" text="Last Name" fx:id="lastNameCol"/>
+                                <TableColumn prefWidth="50.0" text="ZIP Code" fx:id="zipCol"/>
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="497.0" prefWidth="280.0">
+                    <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Contact Details" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                            <font>
+                                <Font name="Helvetica Neue" size="13.0" />
+                            </font>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="84.0" text="Last Name" translateX="10.0" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Street" translateX="10.0" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="City" translateX="10.0" GridPane.rowIndex="3">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Phone" translateX="10.0" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Email" translateX="10.0" GridPane.rowIndex="7">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="State/Province" translateX="10.0" GridPane.rowIndex="4" />
-                        <Label text="Zip/Postal Code" translateX="10.0" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                     </children>
-                  </GridPane>
-                  <ButtonBar layoutX="212.0" layoutY="414.0" prefHeight="40.0" prefWidth="200.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" text="Add" />
-                        <Button mnemonicParsing="false" text="Edit" />
-                        <Button mnemonicParsing="false" text="Delete" />
-                    </buttons>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+                        <GridPane layoutX="132.0" layoutY="52.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="84.0" text="First Name" translateX="10.0" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="17.0" prefWidth="84.0" text="Last Name" translateX="10.0" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label text="Street" translateX="10.0" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label text="City" translateX="10.0" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label text="Phone" translateX="10.0" GridPane.rowIndex="6">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label text="Email" translateX="10.0" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="firstNameLbl" text="Label" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="lastNameLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="streetLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="cityLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="phoneLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="emailLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font name="Helvetica Neue" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label text="State" translateX="10.0" GridPane.rowIndex="4" />
+                                <Label text="Zip Code" translateX="10.0" GridPane.rowIndex="5" />
+                                <Label fx:id="stateLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Label fx:id="zipLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            </children>
+                        </GridPane>
+                        <ButtonBar layoutX="21.0" layoutY="427.0" prefHeight="40.0" prefWidth="200.0">
+                            <buttons>
+                                <Button mnemonicParsing="false" text="Add" />
+                                <Button mnemonicParsing="false" text="Edit" />
+                                <Button mnemonicParsing="false" text="Delete" onAction="#deleteContactHandler"/>
+                            </buttons>
+                        </ButtonBar>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

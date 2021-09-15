@@ -16,7 +16,7 @@ public class Contact {
     private final StringProperty email;
 
     /**
-     * Constructor for Contact object, all parameters required, at the very least empty string
+     * Constructor for Contact object requiring all params
      * Assumes a US-based address
      * @param firstName Contact's first name
      * @param lastName Contact's last name

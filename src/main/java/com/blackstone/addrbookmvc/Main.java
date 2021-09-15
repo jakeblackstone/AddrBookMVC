@@ -6,8 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import com.blackstone.addrbookmvc.model.Contact;
 import java.io.IOException;
 
@@ -53,8 +52,10 @@ public class Main extends Application {
      */
     public void overlayContactView() throws IOException {
         FXMLLoader contactViewLoader = new FXMLLoader(Main.class.getResource("fxml/ContactView.fxml"));              // same idea as root view
-        AnchorPane contactView = contactViewLoader.load(); // cast loaded fxml to AnchorPane and store
-        rootView.setCenter(contactView);                               // center the contactView on root
+        AnchorPane contactView = contactViewLoader.load();                  // cast loaded fxml to AnchorPane and store
+        rootView.setCenter(contactView);                                    // center the contactView on root
+        ContactController controller = contactViewLoader.getController();   // access controller
+        controller.setMainRef(this);                                        // pass reference of this instance to the controller
     }
 
     /**
@@ -77,11 +78,20 @@ public class Main extends Application {
      * A getter for the contact observable list
      * @return ObservableList
      */
-    public ObservableList<Contact> getContactObservableListList() {
+    public ObservableList<Contact> getContactObservableList() {
         return contactObservableList;
     }
 
+   // public void activate() { }
+
+    /**
+     * Main constructor - can manually add contacts for testing purposes
+     */
+    public Main() {
+        contactObservableList.add(new Contact("Hans", "Muster", "914 E Lemon St", "Tempe", "AZ", 85281, "0", "@"));
+    }
+
     public static void main(String[] args) {
-        launch(args);
+        launch(args);   // called to start JavaFX app
     }
 }
