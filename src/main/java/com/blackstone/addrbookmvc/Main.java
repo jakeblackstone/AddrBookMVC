@@ -1,10 +1,13 @@
 package com.blackstone.addrbookmvc;
 
+import com.blackstone.addrbookmvc.controller.ContactController;
+import com.blackstone.addrbookmvc.controller.EditPopupController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
 import com.blackstone.addrbookmvc.model.Contact;
@@ -19,7 +22,7 @@ public class Main extends Application {
 
     /**
      * This is the main list that will hold the contact data in memory during runtime
-     * Observable so that the controller may update view
+     * Observable so that the controller may update the view as changes are made to data
      */
     private final ObservableList<Contact> contactObservableList = FXCollections.observableArrayList();
 
@@ -33,16 +36,15 @@ public class Main extends Application {
 
         // Load FXML to application
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/RootWrapper.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/RootWrapper.fxml"));
         rootView = loader.load();
 
-        // Set up and display scene
-        Scene scene = new Scene(rootView);
+        // set up new scene
         this.stage.setTitle("Address Book");
-        this.stage.setScene(scene);
+        this.stage.setScene(new Scene(rootView));
         this.stage.show();
 
-        // overlay the contact view onto root
+        // overlay the contact controller onto root
         overlayContactView();
     }
 
@@ -51,11 +53,42 @@ public class Main extends Application {
      * @throws IOException if the contact view cannot load
      */
     public void overlayContactView() throws IOException {
-        FXMLLoader contactViewLoader = new FXMLLoader(Main.class.getResource("fxml/ContactView.fxml"));              // same idea as root view
+        FXMLLoader contactViewLoader = new FXMLLoader(Main.class.getResource("view/ContactView.fxml"));              // same idea as root controller
         AnchorPane contactView = contactViewLoader.load();                  // cast loaded fxml to AnchorPane and store
         rootView.setCenter(contactView);                                    // center the contactView on root
         ContactController controller = contactViewLoader.getController();   // access controller
         controller.setMainRef(this);                                        // pass reference of this instance to the controller
+    }
+
+    /**
+     * Overlays the edit popup and updates the view only if OK is hit
+     * @param contact
+     * @return boolean if OK was pressed or not
+     * @throws IOException if the edit popup fails to load
+     */
+    public boolean overlayEditView(Contact contact){
+        try {
+            FXMLLoader popupLoader = new FXMLLoader(Main.class.getResource("view/EditPopupView.fxml"));
+            AnchorPane popup = popupLoader.load();
+
+            // will need a new stage
+            Stage editStage = new Stage();
+            editStage.setTitle("Edit/Add Contact");
+            editStage.initModality(Modality.WINDOW_MODAL);      // Window modaility sets up the framework for a new window that will not
+            editStage.initOwner(stage);                     // -> automatically send events to any other window
+            editStage.setScene(new Scene(popup));
+
+            // Get a reference to the appropriate controller
+            EditPopupController controller = popupLoader.getController();
+            controller.setEditStage(editStage);
+            controller.setContact(contact);
+            editStage.showAndWait();
+
+            return controller.isOkButtonClicked();
+        } catch(IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -67,7 +100,7 @@ public class Main extends Application {
     }
 
     /**
-     * A getter for the root view (cast as BorderPane) in case it needs to be accessed outside the class
+     * A getter for the root controller (cast as BorderPane) in case it needs to be accessed outside the class
      * @return BorderPane
      */
     public BorderPane getRootView() {
@@ -82,13 +115,11 @@ public class Main extends Application {
         return contactObservableList;
     }
 
-   // public void activate() { }
-
     /**
      * Main constructor - can manually add contacts for testing purposes
      */
     public Main() {
-        contactObservableList.add(new Contact("Hans", "Muster", "914 E Lemon St", "Tempe", "AZ", 85281, "0", "@"));
+        //contactObservableList.add(new Contact("Hans", "Muster", "914 E Lemon St", "Tempe", "AZ", 85281, "0", "@"));
     }
 
     public static void main(String[] args) {

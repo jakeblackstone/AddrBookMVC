@@ -9,4 +9,6 @@ module com.blackstone.addrbookmvc {
 
     opens com.blackstone.addrbookmvc to javafx.fxml;
     exports com.blackstone.addrbookmvc;
+    exports com.blackstone.addrbookmvc.controller;
+    opens com.blackstone.addrbookmvc.controller to javafx.fxml;
 }

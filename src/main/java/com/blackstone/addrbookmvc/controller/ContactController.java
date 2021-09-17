@@ -1,14 +1,15 @@
-package com.blackstone.addrbookmvc;
+package com.blackstone.addrbookmvc.controller;
 
 import javafx.fxml.FXML;
 import com.blackstone.addrbookmvc.Main;
 import com.blackstone.addrbookmvc.model.Contact;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 import java.lang.String;
 
 public class ContactController {
-    // collection of members for table that will be set with data pulled from model and passed to view
-
+    // collection of members for table that will be set with data pulled from model and passed to controller
     @FXML
     private TableView<Contact> contactTableView;
 
@@ -46,6 +47,10 @@ public class ContactController {
     private Label emailLbl;
 
     private Main main;      // reference main (app entry point)
+
+
+    // ------ BEGIN CLASS METHODS ------//
+
 
     /**
      * Constructor - for convention
@@ -91,13 +96,13 @@ public class ContactController {
     }
 
     // ------ BEGIN FXML INJECTABLE METHODS ------ //
+
     /**
      * Like a "constructor" (but not really) for FXML - called after files are loaded
      * Loads data into table, makes use of lambda functions for readability
      */
     @FXML
     private void initialize(){
-
         firstNameCol.setCellValueFactory(cData -> cData.getValue().getFirstNameProperty());
         lastNameCol.setCellValueFactory(cData -> cData.getValue().getLastNameProperty());
         zipCol.setCellValueFactory(cData -> cData.getValue().getZipProperty().asObject());
@@ -105,8 +110,7 @@ public class ContactController {
          * implements Property<Number> and thus does not have the auto-unwrap props of Integer etc.
          */
 
-        // blank table on startup
-        contactDataToLabels(null); // TODO - Set startup to check if there is contact data saved and load it vs null accordingly
+        contactDataToLabels(null); // no selection startup
 
         // adds a listener to the table and updates the labels on the right with current selected record
         contactTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> contactDataToLabels(newValue));
@@ -132,6 +136,44 @@ public class ContactController {
         }
 
     }
+
+    /**
+     * Handles creating a new contact
+     * @throws IOException need this due to overlayEditView also throwing IOExc
+     */
+    @FXML
+    private void newContactHandler() throws IOException {
+        Contact temp = new Contact("","","","","",0x00, "","");
+        boolean okGotClicked = main.overlayEditView(temp);
+
+        if(okGotClicked) {
+            main.getContactObservableList().add(temp);
+        }
+    }
+
+    /**
+     * Handles editing a contact
+     * @throws IOException same reason as above
+     */
+    @FXML
+    private void editContactHandler() throws IOException {
+        Contact present = contactTableView.getSelectionModel().getSelectedItem();
+        if(present != null) {
+            boolean okGotClicked = main.overlayEditView(present);
+            if(okGotClicked) {
+                contactDataToLabels(present);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(main.getStage());
+            alert.setTitle("Error: No Selection");
+            alert.setHeaderText("No Contact Selected or Empty Table");
+            alert.setContentText("Please select a Contact record");
+            alert.showAndWait();
+        }
+    }
+
+
 
 
 }

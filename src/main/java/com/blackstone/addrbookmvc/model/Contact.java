@@ -8,26 +8,26 @@ import javafx.beans.property.*;
 public class Contact {
     private final StringProperty firstName;
     private final StringProperty lastName;
-    private final StringProperty street;
-    private final StringProperty city;
-    private final StringProperty state;
+    private StringProperty street;
+    private StringProperty city;
+    private StringProperty state;
     private final IntegerProperty zip;
-    private final StringProperty phone;
-    private final StringProperty email;
+    private StringProperty phone;
+    private StringProperty email;
 
     /**
-     * Constructor for Contact object requiring all params
+     * Default constructor
+     */
+
+
+    /**
+     * Constructor for Contact object requiring all parameters (can be "")
      * Assumes a US-based address
      * @param firstName Contact's first name
      * @param lastName Contact's last name
-     * @param street Contact's residential or work street address
-     * @param city Contact's city
-     * @param state Contact's state
      * @param zip Contact's zip code
-     * @param phone Contact's cell phone - not an int due to different formatting styles
-     * @param email Contact's email address
      */
-    public Contact(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email) {
+    public Contact(String firstName, String lastName, String street, String city, String state, int zip, String email, String phone) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.street = new SimpleStringProperty(street);
