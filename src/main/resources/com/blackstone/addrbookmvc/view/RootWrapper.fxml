@@ -5,23 +5,21 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.blackstone.addrbookmvc.controller.MenuController">
    <top>
-      <MenuBar stylesheets="@../../../../style/bootstrap3.css" BorderPane.alignment="CENTER">
+      <MenuBar  BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Open" onAction="#openHandler"/>
+              <MenuItem mnemonicParsing="false" text="Save" onAction="#saveHandler"/>
+              <MenuItem mnemonicParsing="false" text="Save As" onAction="#saveAsHandler"/>
+              <MenuItem mnemonicParsing="false" text="Close" onAction="#kill"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="About" onAction="#aboutHandler"/>
             </items>
           </Menu>
         </menus>

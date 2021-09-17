@@ -8,16 +8,19 @@ import javafx.beans.property.*;
 public class Contact {
     private final StringProperty firstName;
     private final StringProperty lastName;
-    private StringProperty street;
-    private StringProperty city;
-    private StringProperty state;
+    private final StringProperty street;
+    private final StringProperty city;
+    private final StringProperty state;
     private final IntegerProperty zip;
-    private StringProperty phone;
-    private StringProperty email;
+    private final StringProperty phone;
+    private final StringProperty email;
 
     /**
      * Default constructor
      */
+    public Contact() {
+        this(null,null,null,null,null,0,null,null);
+    }
 
 
     /**

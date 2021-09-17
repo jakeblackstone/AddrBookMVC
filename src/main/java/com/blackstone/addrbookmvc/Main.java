@@ -2,16 +2,24 @@ package com.blackstone.addrbookmvc;
 
 import com.blackstone.addrbookmvc.controller.ContactController;
 import com.blackstone.addrbookmvc.controller.EditPopupController;
+import com.blackstone.addrbookmvc.controller.MenuController;
+import com.blackstone.addrbookmvc.model.XMLWrapper;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
+import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import java.util.prefs.Preferences;
 import com.blackstone.addrbookmvc.model.Contact;
+import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -34,9 +42,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        // Load font family
-        Font.loadFont(getClass().getResourceAsStream("style/"))
-
         // Load FXML to application
         this.stage = stage;
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/RootWrapper.fxml"));
@@ -45,10 +50,22 @@ public class Main extends Application {
         // set up new scene
         this.stage.setTitle("Address Book");
         this.stage.setScene(new Scene(rootView));
+
+        // controller access - Menu is attached to root pane
+        MenuController controller = loader.getController();
+        controller.setMainRef(this);
         this.stage.show();
+
+        // attempt auto-load of most recent book
+        File file = getPath();
+        if (file != null) {
+            loadContactFile(file);
+        }
 
         // overlay the contact controller onto root
         overlayContactView();
+
+
     }
 
     /**
@@ -116,6 +133,80 @@ public class Main extends Application {
      */
     public ObservableList<Contact> getContactObservableList() {
         return contactObservableList;
+    }
+
+    // ------ Data Persistence helpers ------//
+
+    /**
+     * Retreives most recent file path to load to address book
+     * @return File
+     */
+    public File getPath() {
+        Preferences prefs = Preferences.userNodeForPackage(Main.class);
+        String path = prefs.get("filePath", null);
+        if (path != null) {
+            return new File(path);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Sets the file path of the current file and sets it as part of stage title
+     * @param file saved file
+     */
+    public void setPath(File file) {
+        Preferences prefs = Preferences.userNodeForPackage(Main.class);
+        if (file != null) {
+            prefs.put("filePath", file.getPath());
+            stage.setTitle("AddressApp - " + file.getName());
+        } else {
+            prefs.remove("filePath");
+            stage.setTitle("AddressApp");
+        }
+    }
+
+    /**
+     * Loads a specific file to application
+     * @param file
+     */
+    public void loadContactFile(File file) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(XMLWrapper.class);
+            Unmarshaller unmarsh = context.createUnmarshaller();
+            XMLWrapper wrap = (XMLWrapper) unmarsh.unmarshal(file); // Read and convert FROM xml
+            contactObservableList.clear();
+            contactObservableList.addAll(wrap.getContacts());
+            setPath(file);   // Save path
+        } catch (JAXBException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load data!");
+            alert.setContentText("Failed to load data from file:\n" + file.getPath());
+            alert.showAndWait();
+        }
+    }
+
+    /**
+     * Saves contact data to file
+     * @param file
+     */
+    public void saveContactFile(File file) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(XMLWrapper.class);
+            Marshaller marsh = context.createMarshaller();
+            marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            XMLWrapper wrap = new XMLWrapper();
+            wrap.setContacts(contactObservableList);
+            marsh.marshal(wrap, file);      // convert TO xml
+            setPath(file);                  // Save path.
+        } catch (JAXBException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to save data!");
+            alert.setContentText("Failed to save data to file:\n" + file.getPath());
+            alert.showAndWait();
+        }
     }
 
     /**
