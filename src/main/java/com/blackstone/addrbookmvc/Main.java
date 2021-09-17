@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
@@ -33,6 +34,8 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        // Load font family
+        Font.loadFont(getClass().getResourceAsStream("style/"))
 
         // Load FXML to application
         this.stage = stage;

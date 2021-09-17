@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" stylesheets="@../../../../style/bootstrap3.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.blackstone.addrbookmvc.controller.ContactController">
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.blackstone.addrbookmvc.controller.ContactController">
     <children>
-        <SplitPane dividerPositions="0.5359669811320755" layoutX="223.0" layoutY="97.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../../style/bootstrap3.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.5359669811320755" layoutX="223.0" layoutY="97.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@../../../../style/bootstrap3.css">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <TableView fx:id="contactTableView" layoutX="2.0" prefHeight="498.0" prefWidth="350.0" stylesheets="@../../../../style/bootstrap3.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="contactTableView" layoutX="2.0" prefHeight="498.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
                                 <TableColumn fx:id="firstNameCol" prefWidth="101.0" text="First Name" />
                                 <TableColumn fx:id="lastNameCol" prefWidth="102.0" text="Last Name" />
@@ -30,14 +30,14 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="497.0" prefWidth="280.0" stylesheets="@../../../../style/bootstrap3.css">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="497.0" prefWidth="280.0" style="-fx-background-color: #95ACC4;">
                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" stylesheets="@../../../../style/bootstrap3.css" text="Contact Details" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                        <Label layoutX="127.0" layoutY="15.0" text="Contact Details" textFill="#7a8494" AnchorPane.leftAnchor="127.0" AnchorPane.topAnchor="15.0">
                             <font>
-                                <Font name="Helvetica Neue" size="13.0" />
+                                <Font name="Helvetica Neue" size="18.0" />
                             </font>
                         </Label>
-                        <GridPane layoutX="132.0" layoutY="52.0" stylesheets="@../../../../style/bootstrap3.css" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
+                        <GridPane layoutX="6.0" layoutY="56.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="56.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,73 +53,85 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label prefHeight="17.0" prefWidth="84.0" text="First Name" translateX="10.0" GridPane.valignment="CENTER">
+                                <Label prefHeight="17.0" prefWidth="84.0" text="First Name" textFill="WHITE" translateX="10.0" GridPane.valignment="CENTER">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label prefHeight="17.0" prefWidth="84.0" text="Last Name" translateX="10.0" GridPane.rowIndex="1">
+                                <Label prefHeight="17.0" prefWidth="84.0" text="Last Name" textFill="WHITE" translateX="10.0" GridPane.rowIndex="1">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="Street" translateX="10.0" GridPane.rowIndex="2">
+                                <Label text="Street" textFill="WHITE" translateX="10.0" GridPane.rowIndex="2">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="City" translateX="10.0" GridPane.rowIndex="3">
+                                <Label text="City" textFill="WHITE" translateX="10.0" GridPane.rowIndex="3">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="Phone" translateX="10.0" GridPane.rowIndex="6">
+                                <Label text="Phone" textFill="WHITE" translateX="10.0" GridPane.rowIndex="6">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="Email" translateX="10.0" GridPane.rowIndex="7">
+                                <Label text="Email" textFill="WHITE" translateX="10.0" GridPane.rowIndex="7">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="firstNameLbl" text="Label" GridPane.columnIndex="1">
+                                <Label fx:id="firstNameLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="lastNameLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label fx:id="lastNameLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="streetLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <Label fx:id="streetLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="cityLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                <Label fx:id="cityLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="phoneLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                <Label fx:id="phoneLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="emailLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                <Label fx:id="emailLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                     <font>
-                                        <Font name="Helvetica Neue" size="13.0" />
+                                        <Font name="Helvetica Neue" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="State" translateX="10.0" GridPane.rowIndex="4" />
-                                <Label text="Zip Code" translateX="10.0" GridPane.rowIndex="5" />
-                                <Label fx:id="stateLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label fx:id="zipLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label text="State" textFill="WHITE" translateX="10.0" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Helvetica Neue" size="14.0" />
+                           </font></Label>
+                                <Label text="Zip Code" textFill="WHITE" translateX="10.0" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Helvetica Neue" size="14.0" />
+                           </font></Label>
+                                <Label fx:id="stateLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Helvetica Neue" size="14.0" />
+                           </font></Label>
+                                <Label fx:id="zipLbl" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Helvetica Neue" size="14.0" />
+                           </font></Label>
                             </children>
                         </GridPane>
-                        <ButtonBar layoutX="14.0" layoutY="315.0" prefHeight="40.0" prefWidth="352.0" stylesheets="@../../../../style/bootstrap3.css">
+                        <ButtonBar layoutX="14.0" layoutY="315.0" prefHeight="40.0" prefWidth="352.0">
                             <buttons>
                                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#newContactHandler" text="Add" />
                                 <Button mnemonicParsing="false" onAction="#editContactHandler" text="Edit" />
