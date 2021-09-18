@@ -147,7 +147,7 @@ public class Main extends Application {
         if (path != null) {
             return new File(path);
         } else {
-            return null;
+            return new File("model/xml/data.XML");
         }
     }
 

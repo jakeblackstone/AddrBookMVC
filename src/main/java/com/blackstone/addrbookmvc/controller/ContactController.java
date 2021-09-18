@@ -164,12 +164,27 @@ public class ContactController {
                 contactDataToLabels(present);
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.initOwner(main.getStage());
             alert.setTitle("Error: No Selection");
             alert.setHeaderText("No Contact Selected or Empty Table");
             alert.setContentText("Please select a Contact record");
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void resetData() {
+        if(!main.getContactObservableList().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.initOwner(main.getStage());
+            alert.setTitle("Delete all data");
+            alert.setHeaderText("This action will permanently delete all data");
+            alert.setContentText("Are you sure you want to proceed?");
+            if(alert.showAndWait().get() == ButtonType.OK) {
+                main.getContactObservableList().clear();
+                main.saveContactFile(main.getPath());
+            }
         }
     }
 
