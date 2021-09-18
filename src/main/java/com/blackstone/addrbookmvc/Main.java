@@ -120,7 +120,7 @@ public class Main extends Application {
     }
 
     /**
-     * A getter for the root controller (cast as BorderPane) in case it needs to be accessed outside the class
+     * A getter for the root view in case it needs to be accessed outside the class
      * @return BorderPane
      */
     public BorderPane getRootView() {
@@ -159,10 +159,10 @@ public class Main extends Application {
         Preferences prefs = Preferences.userNodeForPackage(Main.class);
         if (file != null) {
             prefs.put("filePath", file.getPath());
-            stage.setTitle("AddressApp - " + file.getName());
+            stage.setTitle("Address Book - " + file.getName());
         } else {
             prefs.remove("filePath");
-            stage.setTitle("AddressApp");
+            stage.setTitle("Address Book");
         }
     }
 
@@ -213,7 +213,7 @@ public class Main extends Application {
      * Main constructor - can manually add contacts for testing purposes
      */
     public Main() {
-        //contactObservableList.add(new Contact("Hans", "Muster", "914 E Lemon St", "Tempe", "AZ", 85281, "0", "@"));
+        //contactObservableList.add(new Contact("Jacob", "Blackstone", "914 E Lemon St", "Tempe", "AZ", 85281, "0", "@"));
     }
 
     public static void main(String[] args) {

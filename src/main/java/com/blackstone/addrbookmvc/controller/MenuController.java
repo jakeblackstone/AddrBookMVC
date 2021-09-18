@@ -12,7 +12,7 @@ public class MenuController
     private Main main;  // yet another main reference
 
     /**
-     * This lets the main refer back to itself
+     * This helps link the controller with the active instance of main as it does in other controller
      *
      * @param main
      */

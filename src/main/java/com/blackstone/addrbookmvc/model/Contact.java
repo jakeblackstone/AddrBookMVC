@@ -2,7 +2,7 @@ package com.blackstone.addrbookmvc.model;
 
 import javafx.beans.property.*;
 /**
- * This is a POJO class to represent the data model for a Contact
+ * This is a  class to represent the data model for a Contact
  * We use JavaFX/JavaBeans Property wrappers for members for easier event handling
  */
 public class Contact {

@@ -1,7 +1,6 @@
 package com.blackstone.addrbookmvc.model;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlElement;
-import javafx.collections.ObservableList;
 
 import java.util.List;
 

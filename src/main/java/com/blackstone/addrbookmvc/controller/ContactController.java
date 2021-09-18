@@ -98,7 +98,7 @@ public class ContactController {
     // ------ BEGIN FXML INJECTABLE METHODS ------ //
 
     /**
-     * Like a "constructor" (but not really) for FXML - called after files are loaded
+     * FXML Initializer - called after files are loaded
      * Loads data into table, makes use of lambda functions for readability
      */
     @FXML

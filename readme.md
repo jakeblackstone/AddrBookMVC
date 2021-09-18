@@ -72,6 +72,19 @@ However, for a larger-scale project, especially one web-based, a tool like Hiber
 
 Any methods tagged @FXML are "injectable", meaning they play a role in updating the view. Because we don't want them being accessed beyond that, they are marked private, while non @FXML methods may be public
 
+ISSUES
+
+There remain some issues to be fixed.
+
+Persistence: If the XML file is deleted or data wiped by "reset", the app will throw a NPE.
+As it stores the last opened path in the file registry, I had to manually add tags to get it to launch again.
+
+Styling: The CSS parser seems to throw several errors, one asking to "Report a NPE", but it does not affect
+program execution
+
+First and last name: These are the minimum for a contact. If one is missing, it will ask for that before proceeding.
+If both are missing, it will only ask for last name.
+
 
 
 
