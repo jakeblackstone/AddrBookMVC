@@ -144,7 +144,7 @@ public class Main extends Application {
      */
     public File getFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(Main.class);
-        String path = prefs.get("filePath", "model/xml/data.xml");
+        String path = prefs.get("filePath", null);
         if (path != null) {
             System.out.println(path);
             return new File(path);
