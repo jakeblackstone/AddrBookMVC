@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import com.blackstone.addrbookmvc.Main;
 import com.blackstone.addrbookmvc.model.Contact;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.lang.String;
 
@@ -183,7 +182,7 @@ public class ContactController {
             alert.setContentText("Are you sure you want to proceed?");
             if(alert.showAndWait().get() == ButtonType.OK) {
                 main.getContactObservableList().clear();
-                main.saveContactFile(main.getPath());
+                main.saveContactFile(main.getFilePath());
             }
         }
     }

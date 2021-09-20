@@ -7,6 +7,7 @@ import java.io.File;
 import javafx.fxml.FXML;
 import com.blackstone.addrbookmvc.Main;
 
+
 public class MenuController
 {
     private Main main;  // yet another main reference
@@ -52,7 +53,7 @@ public class MenuController
      */
     @FXML
     private void saveHandler() {
-        File file = main.getPath();
+        File file = main.getFilePath();
         if (file != null) {
             main.saveContactFile(file);
         } else {

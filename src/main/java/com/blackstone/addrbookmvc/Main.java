@@ -22,6 +22,7 @@ import com.blackstone.addrbookmvc.model.Contact;
 import java.io.File;
 import java.io.IOException;
 
+
 public class Main extends Application {
 
     // stage and root objects for program execution
@@ -57,7 +58,7 @@ public class Main extends Application {
         this.stage.show();
 
         // attempt auto-load of most recent book
-        File file = getPath();
+        File file = getFilePath();
         if (file != null) {
             loadContactFile(file);
         }
@@ -141,13 +142,14 @@ public class Main extends Application {
      * Retreives most recent file path to load to address book
      * @return File
      */
-    public File getPath() {
+    public File getFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(Main.class);
-        String path = prefs.get("filePath", null);
+        String path = prefs.get("filePath", "model/xml/data.xml");
         if (path != null) {
+            System.out.println(path);
             return new File(path);
         } else {
-            return new File("model/xml/data.XML");
+            return null;
         }
     }
 
@@ -179,11 +181,13 @@ public class Main extends Application {
             contactObservableList.addAll(wrap.getContacts());
             setPath(file);   // Save path
         } catch (JAXBException e) {
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Failed to load data!");
             alert.setContentText("Failed to load data from file:\n" + file.getPath());
             alert.showAndWait();
+
         }
     }
 
@@ -193,10 +197,10 @@ public class Main extends Application {
      */
     public void saveContactFile(File file) {
         try {
+            XMLWrapper wrap = new XMLWrapper();
             JAXBContext context = JAXBContext.newInstance(XMLWrapper.class);
             Marshaller marsh = context.createMarshaller();
             marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            XMLWrapper wrap = new XMLWrapper();
             wrap.setContacts(contactObservableList);
             marsh.marshal(wrap, file);      // convert TO xml
             setPath(file);                  // Save path.

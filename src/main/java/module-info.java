@@ -8,10 +8,15 @@ module com.blackstone.addrbookmvc {
     requires org.kordamp.ikonli.javafx;
     requires java.prefs;
     requires jakarta.xml.bind;
+    requires com.sun.xml.bind;
 
-    opens com.blackstone.addrbookmvc to javafx.fxml, jakarta.xml.bind;
+
     exports com.blackstone.addrbookmvc;
     exports com.blackstone.addrbookmvc.controller;
-    opens com.blackstone.addrbookmvc.controller to javafx.fxml;
-    opens com.blackstone.addrbookmvc.model to jakarta.xml.bind;
+    exports com.blackstone.addrbookmvc.model;
+    opens com.blackstone.addrbookmvc.controller to javafx.fxml, jakarta.xml.bind;
+    opens com.blackstone.addrbookmvc.model to javafx.fxml, jakarta.xml.bind;
+
+
+
 }

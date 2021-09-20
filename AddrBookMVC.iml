@@ -8,17 +8,23 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="jakarta.xml.bind.api" level="project" />
     <orderEntry type="library" exported="" name="glassfish.jaxb.runtime" level="project" />
+    <orderEntry type="library" name="sun.xml.bind.jaxb.core" level="project" />
+    <orderEntry type="library" name="sun.xml.bind.jaxb.impl" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:16" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:3.0.2-b01" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:3.0.2-b01" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:16" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:16" level="project" />
     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.1.0" level="project" />
